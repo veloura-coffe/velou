@@ -1,135 +1,65 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELOURA | Premium Coffee Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); }
-        .card-3d { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-3d:hover { transform: translateY(-15px) scale(1.02); }
-        .bg-veloura { background-color: #3d2b1f; }
-    </style>
-</head>
-<body class="bg-stone-50 text-stone-900">
-
-    <header class="relative h-screen flex items-center justify-center overflow-hidden">
-        <img src="https://i.ibb.co/d0B0TyL0/33.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Hero Veloura">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="relative z-10 text-center text-white px-6">
-            <h1 class="text-7xl md:text-9xl font-serif mb-4 tracking-tighter">VELOURA</h1>
-            <p class="text-xl md:text-2xl tracking-[0.4em] uppercase text-amber-400 italic">"Bringing Happiness in Every Cup"</p>
-            <a href="#decouvrir" class="mt-10 inline-block bg-white text-black px-12 py-4 rounded-full font-bold hover:bg-amber-600 hover:text-white transition shadow-2xl">DÉCOUVRIR</a>
+<section class="py-20 bg-veloura text-white">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+            <span class="text-4xl md:text-5xl font-black text-amber-400">12k+</span>
+            <p class="text-stone-400 uppercase text-xs tracking-widest">Tasses Servies</p>
         </div>
-    </header>
+        <div class="space-y-2">
+            <span class="text-4xl md:text-5xl font-black text-amber-400">98%</span>
+            <p class="text-stone-400 uppercase text-xs tracking-widest">Clients Heureux</p>
+        </div>
+        <div class="space-y-2">
+            <span class="text-4xl md:text-5xl font-black text-amber-400">24h</span>
+            <p class="text-stone-400 uppercase text-xs tracking-widest">Livraison Express</p>
+        </div>
+        <div class="space-y-2">
+            <span class="text-4xl md:text-5xl font-black text-amber-400">4.9/5</span>
+            <p class="text-stone-400 uppercase text-xs tracking-widest">Note Moyenne</p>
+        </div>
+    </div>
+</section>
 
-    <section id="decouvrir" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="card-3d">
-                <img src="https://i.ibb.co/hJDGrgTr/77.jpg" class="rounded-[3rem] shadow-2xl border-8 border-white" alt="L'Art de la Dégustation">
+<section id="commander" class="py-24 px-6 relative">
+    <div id="formContainer" class="max-w-4xl mx-auto glass p-10 md:p-16 rounded-[4rem] shadow-2xl relative z-10 transition-all duration-700">
+        <h2 class="text-4xl font-serif text-center mb-10 text-amber-950">Finaliser votre Commande</h2>
+        
+        <form id="orderForm" class="grid md:grid-cols-2 gap-10">
+            <div class="space-y-4">
+                <input type="text" id="nomClient" placeholder="Nom Complet" required class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none focus:ring-2 focus:ring-amber-600">
+                <input type="tel" placeholder="Téléphone (Maroc)" required class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none focus:ring-2 focus:ring-amber-600">
+                <textarea placeholder="Adresse de livraison" required class="w-full p-4 rounded-2xl border-stone-200 border bg-white h-32 outline-none focus:ring-2 focus:ring-amber-600"></textarea>
             </div>
             <div class="space-y-6">
-                <h2 class="text-5xl font-serif text-amber-950 underline decoration-amber-200">L'Art de la Dégustation</h2>
-                <p class="text-lg text-stone-600 leading-relaxed italic">
-                    "VELOURA n'est pas qu'un café, c'est une invitation au raffinement."
-                </p>
-                <p class="text-lg text-stone-600 leading-relaxed">
-                    Inspiré par la douceur du velours, notre mélange a été pensé pour transformer chaque tasse en une expérience sensorielle unique. L'équilibre parfait entre la force du café et la gourmandise des arômes.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-stone-900 text-white">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-5xl font-serif mb-10 text-amber-400 italic">Secrets de Production</h2>
-                <div class="space-y-8">
-                    <div class="flex gap-6 items-center bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <img src="https://i.ibb.co/Kcj0bq1S/66.jpg" class="w-20 h-20 rounded-full object-cover border-2 border-amber-600" alt="Étape 1">
-                        <p class="text-stone-300"><strong>Sélection :</strong> Nous choisissons uniquement des grains de qualité premium pour assurer une base robuste et noble.</p>
-                    </div>
-                    <div class="flex gap-6 items-center bg-white/5 p-6 rounded-3xl border border-white/10">
-                        <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-20 h-20 rounded-full object-cover border-2 border-amber-600" alt="Étape 2">
-                        <p class="text-stone-300"><strong>Aromatisation :</strong> Une infusion lente de caramel, noisette et vanille pour un goût velouté incomparable.</p>
-                    </div>
+                <select id="prodSel" class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none font-bold text-amber-900">
+                    <option value="43">Caramel (250g) - 43 DH</option>
+                    <option value="85" selected>Noisette (500g) - 85 DH</option>
+                    <option value="170">Vanille (1kg) - 170 DH</option>
+                </select>
+                <div class="bg-amber-900 text-white p-8 rounded-3xl text-center shadow-xl">
+                    <p class="text-xs uppercase opacity-60">Total à payer</p>
+                    <span id="finalPrice" class="text-5xl font-black">85 DH</span>
                 </div>
+                <button type="submit" class="w-full bg-black text-white py-6 rounded-2xl font-bold hover:bg-amber-800 transition shadow-xl uppercase tracking-widest">
+                    Confirmer ma commande
+                </button>
             </div>
-            <div class="relative">
-                <img src="https://i.ibb.co/Kcj0bq1S/66.jpg" class="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition duration-700" alt="Production Veloura">
-            </div>
+        </form>
+    </div>
+
+    <div id="successPage" class="hidden max-w-2xl mx-auto text-center p-16 bg-white rounded-[4rem] shadow-2xl border-t-8 border-amber-600">
+        <div class="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8 text-5xl">
+            ✓
         </div>
-    </section>
-
-    <section id="produits" class="py-24 px-6 bg-stone-200/50">
-        <h2 class="text-center text-5xl font-serif mb-20 text-amber-950">La Collection Veloura</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-            
-            <div class="card-3d bg-white p-6 rounded-[3rem] shadow-xl text-center">
-                <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6" alt="Douceur Caramel">
-                <h3 class="text-2xl font-bold italic">Douceur Caramel</h3>
-                <p class="text-stone-400 text-sm mb-4">Format 250g — 43 DH</p>
-                <a href="#commander" class="text-amber-700 font-bold hover:underline">Sélectionner</a>
-            </div>
-
-            <div class="card-3d bg-white p-6 rounded-[3rem] shadow-2xl text-center scale-110 border-2 border-amber-400">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-600 text-white px-4 py-1 rounded-full text-xs font-bold">BEST SELLER</div>
-                <img src="https://i.ibb.co/GfL6SsC8/11.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6" alt="Éclat Noisette">
-                <h3 class="text-2xl font-bold italic">Éclat Noisette</h3>
-                <p class="text-stone-400 text-sm mb-4">Format 500g — 85 DH</p>
-                <a href="#commander" class="text-amber-700 font-bold hover:underline">Sélectionner</a>
-            </div>
-
-            <div class="card-3d bg-white p-6 rounded-[3rem] shadow-xl text-center">
-                <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6" alt="Nuance Vanille">
-                <h3 class="text-2xl font-bold italic">Nuance Vanille</h3>
-                <p class="text-stone-400 text-sm mb-4">Format 1kg — 170 DH</p>
-                <a href="#commander" class="text-amber-700 font-bold hover:underline">Sélectionner</a>
-            </div>
-
+        <h2 class="text-4xl font-serif text-amber-950 mb-4">Merci <span id="displayNom"></span> !</h2>
+        <p class="text-stone-600 mb-8 text-lg">
+            Votre commande de VELOURA a été reçue avec succès. Préparez-vous à vivre l'expérience sensorielle ultime.
+        </p>
+        <div class="bg-stone-50 p-6 rounded-3xl border border-stone-100 mb-8">
+            <p class="text-sm text-stone-400 uppercase tracking-widest">Statut de la commande</p>
+            <p class="font-bold text-amber-900 text-xl">En cours de préparation ☕</p>
         </div>
-    </section>
-
-    <section id="commander" class="py-24 px-6 relative">
-        <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale" alt="Form background">
-        <div class="max-w-4xl mx-auto glass p-10 md:p-16 rounded-[4rem] shadow-2xl relative z-10">
-            <h2 class="text-4xl font-serif text-center mb-10">Finaliser votre Commande</h2>
-            <form action="/commander" method="POST" class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-4">
-                    <input type="text" placeholder="Nom Complet" required class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none focus:ring-2 focus:ring-amber-600">
-                    <input type="tel" placeholder="Téléphone (Maroc)" required class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none focus:ring-2 focus:ring-amber-600">
-                    <textarea placeholder="Adresse de livraison" class="w-full p-4 rounded-2xl border-stone-200 border bg-white h-32 outline-none focus:ring-2 focus:ring-amber-600"></textarea>
-                </div>
-                <div class="space-y-6">
-                    <select id="prodSel" class="w-full p-4 rounded-2xl border-stone-200 border bg-white outline-none font-bold text-amber-900">
-                        <option value="43">Caramel (250g) - 43 DH</option>
-                        <option value="85" selected>Noisette (500g) - 85 DH</option>
-                        <option value="170">Vanille (1kg) - 170 DH</option>
-                    </select>
-                    <div class="bg-amber-900 text-white p-8 rounded-3xl text-center shadow-xl">
-                        <p class="text-xs uppercase opacity-60">Total à payer</p>
-                        <span id="finalPrice" class="text-5xl font-black">85 DH</span>
-                    </div>
-                    <button class="w-full bg-black text-white py-6 rounded-2xl font-bold hover:bg-amber-800 transition shadow-xl uppercase tracking-widest">Confirmer</button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <footer class="py-12 bg-black text-stone-500 text-center">
-        <p class="text-white text-3xl font-serif mb-4 tracking-widest">VELOURA</p>
-        <p>veloura@gmail.com | 0645636772</p>
-        <p class="mt-6 text-[10px] uppercase tracking-[0.2em]">bringing happiness in every cup</p>
-    </footer>
-
-    <script>
-        const sel = document.getElementById('prodSel');
-        const pri = document.getElementById('finalPrice');
-        sel.addEventListener('change', () => { pri.innerText = sel.value + " DH"; });
-    </script>
-</body>
-</html>
+        <button onclick="window.location.reload()" class="text-amber-600 font-bold hover:underline">
+            ← Retour à l'accueil
+        </button>
+    </div>
+</section>

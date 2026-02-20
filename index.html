@@ -50,10 +50,16 @@
 
     <nav class="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-white/10 backdrop-blur-md border-b border-white/10">
         <div class="text-3xl font-serif font-black text-white mix-blend-difference uppercase tracking-tighter">Veloura</div>
-        <button onclick="toggleCart()" class="bg-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all">
-            <span class="text-xl">🛒</span>
-            <span id="cartCount" class="bg-amber-900 text-white w-5 h-5 flex items-center justify-center rounded-full text-[10px] font-bold">0</span>
-        </button>
+        <div class="flex items-center gap-6">
+            <div class="hidden md:flex gap-4 text-white mix-blend-difference text-xl">
+                <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <button onclick="toggleCart()" class="bg-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all">
+                <span class="text-xl">🛒</span>
+                <span id="cartCount" class="bg-amber-900 text-white w-5 h-5 flex items-center justify-center rounded-full text-[10px] font-bold">0</span>
+            </button>
+        </div>
     </nav>
 
     <header class="h-[90vh] flex items-center justify-center hero-gradient text-center">
@@ -160,6 +166,29 @@
         </div>
     </section>
 
+    <section class="py-20 bg-amber-50 reveal-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">5000+</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Clients Heureux</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">100%</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Naturel</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">24h</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Livraison Moyenne</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">4.9/5</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Note Clients</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="produits" class="py-32 bg-[#F4F1EA]/50 px-6 reveal-section">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-7xl font-serif italic text-center mb-24">Choisir mon Bonheur</h2>
@@ -195,9 +224,10 @@
 
     <footer class="bg-stone-950 text-white pt-24 pb-12 px-8 text-center">
         <div class="text-4xl font-serif italic mb-8">Veloura</div>
-        <div class="flex justify-center gap-8 text-2xl mb-12">
-            <a href="#" class="hover:text-amber-500 transition-all"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-amber-500 transition-all"><i class="fab fa-whatsapp"></i></a>
+        <div class="flex justify-center gap-8 text-3xl mb-12">
+            <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/212600000000" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-whatsapp"></i></a>
         </div>
         <p class="text-stone-600 text-[10px] uppercase tracking-[0.5em]">© 2024 Veloura Coffee Experience • Maroc</p>
     </footer>
@@ -221,7 +251,7 @@
         <div class="relative bg-white p-12 rounded-[4rem] max-w-lg text-center shadow-2xl">
             <div class="text-7xl mb-6">✨</div>
             <h2 class="text-4xl font-serif italic mb-4">Commande Reçue !</h2>
-            <p class="text-stone-600 italic mb-8">Votre instant Veloura est en préparation. Nous vous contacterons sous peu.</p>
+            <p class="text-stone-600 italic mb-8">Votre instant Veloura est en préparation. Nous vous contacterons sous peu pour finaliser la livraison.</p>
             <button onclick="closeConfirm()" class="px-10 py-4 bg-amber-900 text-white rounded-full font-bold uppercase tracking-widest">Continuer</button>
         </div>
     </div>

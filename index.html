@@ -15,17 +15,32 @@
         body { font-family: 'Poppins', sans-serif; background: var(--off-white); color: #1c1917; scroll-behavior: smooth; overflow-x: hidden; }
         .font-serif { font-family: 'Playfair Display', serif; }
 
+        /* EFFET 3D CARDS */
         .card-3d { transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); }
         .card-3d:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .reveal { animation: fadeIn 1s ease-out forwards; }
+        /* ANIMATION DE RÉVÉLATION AU SCROLL */
+        .reveal-section { 
+            opacity: 0; 
+            transform: translateY(40px); 
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); 
+        }
+        .reveal-section.active { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
         
-        /* IMAGE HERO MODIFIÉE */
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/Zz1p02DM/image.png'); background-size: cover; background-position: center; }
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/d0B0TyL0/33.jpg'); background-size: cover; background-position: center; }
         
         #cartOverlay { transition: 0.6s cubic-bezier(0.8, 0, 0.2, 1); transform: translateX(100%); }
         #cartOverlay.active { transform: translateX(0); }
+
+        /* Petit flottement pour les émojis */
+        .float-emoji { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <body>
@@ -38,53 +53,76 @@
         </button>
     </nav>
 
-    <header class="h-[70vh] flex items-center justify-center hero-gradient text-center">
-        <div class="reveal">
+    <header class="h-[80vh] flex items-center justify-center hero-gradient text-center">
+        <div class="reveal-section active">
             <h1 class="text-7xl md:text-9xl font-serif text-white italic">Veloura</h1>
             <p class="text-amber-400 tracking-[0.5em] uppercase text-sm mt-4 font-bold">L'Art du Café Sensoriel</p>
         </div>
     </header>
 
-    <section class="py-32 px-6 max-w-7xl mx-auto">
+    <section class="py-32 px-6 max-w-7xl mx-auto reveal-section">
         <div class="grid md:grid-cols-2 gap-20 items-center">
             <div class="card-3d">
-                <img src="https://i.ibb.co/1YMcjV2t/image.png" alt="Café Caramel" class="rounded-[3rem] shadow-2xl">
+                <img src="https://i.ibb.co/hJDGrgTr/77.jpg" alt="Café Caramel" class="rounded-[3rem] shadow-2xl">
             </div>
             <div class="space-y-8">
                 <span class="text-amber-800 text-xs font-black uppercase tracking-widest">L'instant Signature</span>
                 <h2 class="text-5xl font-serif italic leading-tight">L'Éveil des Sens</h2>
                 <p class="text-lg text-stone-600 leading-relaxed italic font-light">
-                    "Laissez-vous envoûter par l’alliance irrésistible de la force du café et de la rondeur d’un caramel fondant. <strong>Veloura Caramel</strong> a été conçu comme une véritable gourmandise liquide : chaque gorgée libère des notes sucrées et réconfortantes qui rappellent les souvenirs d'enfance. Sa texture veloutée enrobe le palais pour une fin de bouche longue et délicate. C'est le compagnon idéal de vos moments de pause, apportant cette touche de magie et de douceur qui transforme une simple tasse en un instant d'exception."
+                    "Laissez-vous envoûter par l’alliance irrésistible de la force du café et de la rondeur d’un caramel fondant. <strong>Veloura Caramel</strong> a été conçu comme une véritable gourmandise liquide."
                 </p>
                 <div class="h-[1px] w-20 bg-amber-800"></div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-[#F9F7F2] px-6">
+    <section class="py-24 bg-white px-6 reveal-section">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl font-serif italic mb-16 underline decoration-amber-200 underline-offset-8">Le Rituel Veloura ⏳</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="space-y-4 p-8 bg-stone-50 rounded-[3rem] card-3d border border-stone-100">
+                    <div class="text-5xl float-emoji mb-4">☕</div>
+                    <h4 class="font-bold uppercase text-xs tracking-widest text-amber-900">Préparation</h4>
+                    <p class="text-stone-500 text-sm italic">Versez l'eau frémissante sur le grain moulu pour libérer l'essence pure du café.</p>
+                </div>
+                <div class="space-y-4 p-8 bg-stone-50 rounded-[3rem] card-3d border border-stone-100">
+                    <div class="text-5xl float-emoji mb-4" style="animation-delay: 0.5s">👃</div>
+                    <h4 class="font-bold uppercase text-xs tracking-widest text-amber-900">Inspiration</h4>
+                    <p class="text-stone-500 text-sm italic">Laissez les vapeurs de caramel et de noisette envahir vos sens avant la première gorgée.</p>
+                </div>
+                <div class="space-y-4 p-8 bg-stone-50 rounded-[3rem] card-3d border border-stone-100">
+                    <div class="text-5xl float-emoji mb-4" style="animation-delay: 1s">✨</div>
+                    <h4 class="font-bold uppercase text-xs tracking-widest text-amber-900">Dégustation</h4>
+                    <p class="text-stone-500 text-sm italic">Savourez l'instant. Le velouté s'installe, le temps s'arrête. C'est l'instant Veloura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-[#F9F7F2] px-6 reveal-section">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-5xl font-serif italic mb-20">Pourquoi choisir Veloura ?</h2>
             <div class="grid md:grid-cols-3 gap-12">
                 <div class="p-12 bg-white rounded-[4rem] card-3d">
                     <span class="text-5xl block mb-6">💎</span>
                     <h3 class="text-xl font-bold mb-4 uppercase">Qualité Rare</h3>
-                    <p class="text-stone-500 font-light italic">Sélection rigoureuse des meilleurs grains pour une pureté absolue.</p>
+                    <p class="text-stone-500 font-light italic">Sélection rigoureuse des meilleurs grains.</p>
                 </div>
                 <div class="p-12 bg-white rounded-[4rem] card-3d border-2 border-amber-100">
-                    <span class="text-5xl block mb-6">☕️</span>
+                    <span class="text-5xl block mb-6">🌿</span>
                     <h3 class="text-xl font-bold mb-4 uppercase">Arômes Naturels</h3>
-                    <p class="text-stone-500 font-light italic">Aucun additif chimique, uniquement des essences pures et nobles.</p>
+                    <p class="text-stone-500 font-light italic">Aucun additif chimique, essences pures.</p>
                 </div>
                 <div class="p-12 bg-white rounded-[4rem] card-3d">
-                    <span class="text-5xl block mb-6">🚚</span>
+                    <span class="text-5xl block mb-6">🇲🇦</span>
                     <h3 class="text-xl font-bold mb-4 uppercase">Proximité</h3>
-                    <p class="text-stone-500 font-light italic">Livraison express dans tout le Maroc en 24h/48h.</p>
+                    <p class="text-stone-500 font-light italic">Livraison au Maroc en 24h/48h.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 px-6">
+    <section class="py-32 px-6 reveal-section">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="flex-1 space-y-8">
@@ -92,70 +130,44 @@
                     <div class="space-y-6">
                         <div class="flex gap-6">
                             <span class="text-2xl font-serif italic text-amber-800">01.</span>
-                            <p class="text-stone-600"><strong>Torréfaction Lente :</strong> Chaque grain est torréfié à basse température pour préserver ses huiles essentielles.</p>
+                            <p class="text-stone-600 italic">Torréfaction Lente pour préserver les huiles.</p>
                         </div>
                         <div class="flex gap-6">
                             <span class="text-2xl font-serif italic text-amber-800">02.</span>
-                            <p class="text-stone-600"><strong>Infusion à Coeur :</strong> Nos arômes sont intégrés pendant le refroidissement pour une fusion parfaite.</p>
-                        </div>
-                        <div class="flex gap-6">
-                            <span class="text-2xl font-serif italic text-amber-800">03.</span>
-                            <p class="text-stone-600"><strong>Fraîcheur Scellée :</strong> Mise sous vide immédiate pour garantir un parfum intact à l'ouverture.</p>
+                            <p class="text-stone-600 italic">Infusion à Coeur pour une fusion parfaite.</p>
                         </div>
                     </div>
                 </div>
                 <div class="flex-1">
-                    <img src="https://i.ibb.co/ZRLqjQ22/image.png" class="rounded-[4rem] shadow-2xl rotate-2" alt="Production">
+                    <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="rounded-[4rem] shadow-2xl rotate-2" alt="Production">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-[#FDFCFB] px-6">
-        <div class="max-w-5xl mx-auto border-t border-stone-100 pt-24 text-center">
-            <h2 class="text-4xl font-serif italic mb-16 underline decoration-amber-200 underline-offset-8">Le Rituel Veloura ⏳</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="space-y-4 p-6 hover:bg-white rounded-3xl transition-all duration-300">
-                    <div class="text-4xl text-amber-900 mb-4"><i class="fas fa-seedling"></i></div>
-                    <h4 class="font-bold uppercase text-xs tracking-widest">Le Grain</h4>
-                    <p class="text-stone-500 text-sm italic">Moulez vos grains juste avant l'infusion pour libérer toute la puissance des arômes naturels de Veloura.</p>
-                </div>
-                <div class="space-y-4 p-6 hover:bg-white rounded-3xl transition-all duration-300">
-                    <div class="text-4xl text-amber-900 mb-4"><i class="fas fa-tint"></i></div>
-                    <h4 class="font-bold uppercase text-xs tracking-widest">L'Eau</h4>
-                    <p class="text-stone-500 text-sm italic">Privilégiez une eau filtrée à 90°C. Une eau trop bouillante risquerait de masquer la rondeur du caramel.</p>
-                </div>
-                <div class="space-y-4 p-6 hover:bg-white rounded-3xl transition-all duration-300">
-                    <div class="text-4xl text-amber-900 mb-4"><i class="fas fa-mug-hot"></i></div>
-                    <h4 class="font-bold uppercase text-xs tracking-widest">Le Temps</h4>
-                    <p class="text-stone-500 text-sm italic">Laissez infuser 4 minutes. Fermez les yeux. Respirez. Profitez de ce voyage sensoriel unique.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="produits" class="py-32 bg-[#F4F1EA] px-6">
+    <section id="produits" class="py-32 bg-[#F4F1EA] px-6 reveal-section">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-6xl font-serif italic text-center mb-24">Choisir mon Bonheur</h2>
             <div class="grid md:grid-cols-3 gap-16">
-                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-100 shadow-sm">
-                    <img src="https://i.ibb.co/1YMcjV2t/image.png" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-100">
+                    <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8 shadow-lg">
                     <h3 class="text-2xl font-serif italic mb-6">Douceur Caramel</h3>
                     <div class="space-y-3">
                         <button onclick="addToCart('Caramel 250g', 43)" class="w-full py-4 border border-stone-200 rounded-2xl hover:bg-stone-50 transition">250g — 43 DH</button>
                         <button onclick="addToCart('Caramel 1kg', 170)" class="w-full py-4 bg-stone-900 text-white rounded-2xl shadow-xl">1kg — 170 DH ★</button>
                     </div>
                 </div>
-                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border-2 border-amber-200 scale-110 shadow-xl">
-                    <img src="https://i.ibb.co/Zz1p02DM/image.png" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border-2 border-amber-200 scale-110 shadow-2xl relative">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-amber-800 text-white px-6 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Le Favori</div>
+                    <img src="https://i.ibb.co/GfL6SsC8/11.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8 shadow-lg">
                     <h3 class="text-2xl font-serif italic mb-6">Éclat Noisette</h3>
                     <div class="space-y-3">
                         <button onclick="addToCart('Noisette 250g', 43)" class="w-full py-4 border border-stone-200 rounded-2xl hover:bg-stone-50 transition">250g — 43 DH</button>
                         <button onclick="addToCart('Noisette 1kg', 170)" class="w-full py-4 bg-amber-900 text-white rounded-2xl shadow-xl">1kg — 170 DH</button>
                     </div>
                 </div>
-                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-100 shadow-sm">
-                    <img src="https://i.ibb.co/ZRLqjQ22/image.png" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-100">
+                    <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8 shadow-lg">
                     <h3 class="text-2xl font-serif italic mb-6">Nuance Vanille</h3>
                     <div class="space-y-3">
                         <button onclick="addToCart('Vanille 250g', 43)" class="w-full py-4 border border-stone-200 rounded-2xl hover:bg-stone-50 transition">250g — 43 DH</button>
@@ -166,49 +178,15 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-4xl font-serif italic mb-20">Paroles de Veloura Lovers 💭</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="p-10 bg-stone-50 rounded-[3rem] italic text-stone-600 border border-stone-100">
-                    "Une expérience incroyable. On sent vraiment le goût du caramel naturel." - <strong>Sarah B.</strong>
-                </div>
-                <div class="p-10 bg-stone-50 rounded-[3rem] italic text-stone-600 border border-stone-100">
-                    "Le service client est au top et la livraison est super rapide à Casa." - <strong>Yassine K.</strong>
-                </div>
-                <div class="p-10 bg-stone-50 rounded-[3rem] italic text-stone-600 border border-stone-100">
-                    "Le pack 1kg noisette est devenu mon indispensable du matin." - <strong>Laila M.</strong>
-                </div>
+    <footer class="bg-stone-950 text-white pt-32 pb-12 px-8 reveal-section">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-4xl font-serif italic mb-10">Veloura</div>
+            <div class="flex justify-center gap-8 text-2xl mb-12">
+                <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/212600000000" class="hover:text-amber-500 transition"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </div>
-    </section>
-
-    <footer class="bg-stone-950 text-white pt-32 pb-12 px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-3 gap-16 mb-32 text-center border-y border-white/10 py-20">
-                <div>
-                    <span class="text-5xl font-serif block mb-2">12k+</span>
-                    <p class="text-stone-500 uppercase text-xs tracking-widest">Tasses Servies</p>
-                </div>
-                <div>
-                    <span class="text-5xl font-serif block mb-2">4.9/5</span>
-                    <p class="text-stone-500 uppercase text-xs tracking-widest">Note Satisfaction</p>
-                </div>
-                <div>
-                    <span class="text-5xl font-serif block mb-2">24h</span>
-                    <p class="text-stone-500 uppercase text-xs tracking-widest">Délai Livraison Moyen</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
-                <div class="text-4xl font-serif italic">Veloura</div>
-                <div class="flex gap-8 text-2xl">
-                    <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500 transition"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/212600000000" class="hover:text-amber-500 transition"><i class="fab fa-whatsapp"></i></a>
-                </div>
-                <p class="text-stone-500 text-xs uppercase tracking-widest">© 2024 Veloura Coffee Experience</p>
-            </div>
+            <p class="text-stone-500 text-xs uppercase tracking-widest">© 2024 Veloura Coffee Experience</p>
         </div>
     </footer>
 
@@ -221,12 +199,25 @@
                 <div class="flex justify-between text-2xl font-bold mb-8">
                     <span>Total</span><span id="totalPrice">0 DH</span>
                 </div>
-                <button onclick="window.location.href='https://wa.me/212600000000?text=Bonjour Veloura, je souhaite commander...'" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-stone-800 transition">Commander via WhatsApp</button>
+                <button onclick="window.location.href='https://wa.me/212600000000?text=Bonjour, je souhaite commander : '" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold uppercase tracking-widest shadow-2xl">Commander via WhatsApp</button>
             </div>
         </div>
     </div>
 
     <script>
+        // SCRIPT ANIMATION AU SCROLL
+        const reveals = document.querySelectorAll('.reveal-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // PANIER
         let cart = [];
         function toggleCart() { document.getElementById('cartOverlay').classList.toggle('active'); }
         function addToCart(name, price) {
@@ -239,7 +230,7 @@
             const items = document.getElementById('cartItems');
             items.innerHTML = cart.map((item, i) => `
                 <div class="flex justify-between items-center bg-stone-50 p-4 rounded-xl border border-stone-100">
-                    <span class="text-sm font-medium">${item.name}</span>
+                    <span class="text-sm uppercase font-bold tracking-tighter">${item.name}</span>
                     <span class="font-bold text-amber-900">${item.price} DH</span>
                 </div>
             `).join('');

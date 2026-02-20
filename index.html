@@ -3,225 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veloura | Expérience 3D ☕</title>
+    <title>Veloura | L'Art du Café Gourmet ☕</title>
     
+    <meta name="description" content="Découvrez Veloura Caramel, une alliance irrésistible entre force du café et caramel fondant. Livraison express au Maroc.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600;900&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        :root { --gold: #c29958; --dark: #121212; }
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            background-color: var(--dark); 
-            color: white; 
-            overflow-x: hidden; 
-            perspective: 1000px; /* Nécessaire pour les effets 3D */
-        }
+        :root { --off-white: #FDFCFB; --cream: #F9F7F2; --gold: #78350f; }
+        body { font-family: 'Poppins', sans-serif; background: var(--off-white); color: #1c1917; scroll-behavior: smooth; overflow-x: hidden; }
         .font-serif { font-family: 'Playfair Display', serif; }
 
-        /* ARRIÈRE-PLAN 3D CANVAS */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            z-index: -1;
-            filter: blur(1px);
-        }
+        .card-3d { transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .card-3d:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 40px 70px rgba(0,0,0,0.08); }
 
-        /* EFFET DE PROFONDEUR SUR LES SECTIONS */
         .reveal-section { 
             opacity: 0; 
-            transform: translateZ(-100px) translateY(50px); 
-            transition: all 1.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
+            transform: translateY(60px); 
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); 
         }
         .reveal-section.active { 
             opacity: 1; 
-            transform: translateZ(0) translateY(0); 
+            transform: translateY(0); 
         }
-
-        /* CARD 3D FLOTTANTE */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            transition: transform 0.5s ease;
-            transform-style: preserve-3d;
+        
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--cream), transparent);
+            width: 1px;
+            margin: 0 auto;
         }
-        .glass-card:hover {
-            transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
-        }
-
-        /* GRADIENT ANIMÉ */
-        .hero-title {
-            background: linear-gradient(45deg, #fff, var(--gold), #fff);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
-        @keyframes shine { to { background-position: 200% center; } }
-
+        
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/d0B0TyL0/33.jpg'); background-size: cover; background-position: center; }
+        
         #cartOverlay, #confirmOverlay { transition: 0.8s cubic-bezier(0.8, 0, 0.2, 1); }
         #cartOverlay { transform: translateX(100%); }
         #cartOverlay.active { transform: translateX(0); }
         
-        #confirmOverlay { opacity: 0; pointer-events: none; transform: scale(0.8); }
+        /* Message de confirmation */
+        #confirmOverlay { opacity: 0; pointer-events: none; transform: scale(0.9); }
         #confirmOverlay.active { opacity: 1; pointer-events: auto; transform: scale(1); }
+
+        .float-emoji { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
-
-    <nav class="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-black/20 backdrop-blur-lg">
-        <div class="text-3xl font-serif font-black text-white uppercase tracking-tighter">Veloura</div>
-        <button onclick="toggleCart()" class="bg-white text-black p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all">
+    <nav class="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-white/10 backdrop-blur-md border-b border-white/10">
+        <div class="text-3xl font-serif font-black text-white mix-blend-difference uppercase tracking-tighter">Veloura</div>
+        <button onclick="toggleCart()" class="bg-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all active:scale-95">
             <span class="text-xl">🛒</span>
             <span id="cartCount" class="bg-amber-900 text-white w-5 h-5 flex items-center justify-center rounded-full text-[10px] font-bold">0</span>
         </button>
     </nav>
 
-    <header class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
+    <header class="h-[90vh] flex items-center justify-center hero-gradient text-center">
         <div class="reveal-section active">
-            <h1 class="text-8xl md:text-[12rem] font-serif italic leading-none hero-title">Veloura</h1>
-            <p class="text-amber-400 tracking-[0.8em] uppercase text-sm mt-6 font-black">L'Art du Café en 3 Dimensions</p>
+            <h1 class="text-8xl md:text-[12rem] font-serif text-white italic leading-none">Veloura</h1>
+            <p class="text-amber-400 tracking-[0.7em] uppercase text-sm mt-6 font-black opacity-90">L'Art du Café Sensoriel</p>
+            <div class="mt-12 animate-bounce text-white opacity-50 text-2xl">↓</div>
         </div>
-        <div class="absolute bottom-10 animate-bounce text-white/30">SCROLLEZ POUR EXPLORER</div>
     </header>
 
     <section class="py-32 px-6 max-w-7xl mx-auto reveal-section">
-        <div class="glass-card p-12 grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-transparent rounded-[3rem] blur opacity-25 group-hover:opacity-50 transition"></div>
-                <img src="https://i.ibb.co/hJDGrgTr/77.jpg" alt="Café" class="rounded-[3rem] shadow-2xl relative">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="card-3d relative">
+                <div class="absolute -inset-4 border border-amber-100 rounded-[3.5rem] -z-10 translate-x-4 translate-y-4"></div>
+                <img src="https://i.ibb.co/hJDGrgTr/77.jpg" alt="Café Caramel" class="rounded-[3rem] shadow-2xl">
             </div>
             <div class="space-y-8">
-                <h2 class="text-5xl font-serif italic text-amber-200">L'Éveil des Sens</h2>
-                <div class="text-lg text-stone-300 leading-relaxed space-y-4 italic font-light">
-                    <p>« Bienvenue là où le café cesse d’être une simple habitude pour devenir un véritable voyage sensoriel. Chez <strong>Veloura</strong>, nous avons capturé l’essence même du réconfort. »</p>
-                    <p>« Imaginez une texture si veloutée qu'elle enrobe votre palais, libérant des arômes de caramel fondant à chaque respiration. »</p>
+                <span class="text-amber-800 text-xs font-black uppercase tracking-[0.3em]">Bienvenue dans l'Expérience Veloura ☕✨</span>
+                <h2 class="text-5xl md:text-6xl font-serif italic leading-tight">L'Éveil des Sens</h2>
+                <div class="text-lg text-stone-600 leading-relaxed space-y-4 italic font-light">
+                    <p>« Bienvenue là où le café cesse d’être une simple habitude pour devenir un véritable voyage sensoriel. Chez <strong>Veloura</strong>, nous avons capturé l’essence même du réconfort : l’intensité d’un grain d’exception mariée à la rondeur infinie de notes gourmandes. »</p>
+                    <p>« Imaginez une texture si veloutée qu'elle enrobe votre palais, libérant des arômes de caramel fondant, de noisette grillée ou de vanille pure à chaque gorgée. Veloura transforme votre tasse en un instant d'exception. »</p>
+                </div>
+                <div class="h-[1px] w-32 bg-amber-800"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-stone-900 text-white reveal-section overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-16 text-center">
+                <div class="space-y-2">
+                    <div class="text-6xl font-serif italic text-amber-400 stat-item" data-target="12000">0</div>
+                    <p class="uppercase text-[10px] tracking-[0.4em] text-stone-400 font-bold">Tasses servies</p>
+                </div>
+                <div class="space-y-2 border-x border-white/10">
+                    <div class="text-6xl font-serif italic text-amber-400 stat-item" data-target="98">0</div>
+                    <p class="uppercase text-[10px] tracking-[0.4em] text-stone-400 font-bold">% Satisfaction</p>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-6xl font-serif italic text-amber-400 stat-item" data-target="24">0</div>
+                    <p class="uppercase text-[10px] tracking-[0.4em] text-stone-400 font-bold">Heures Livraison</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 reveal-section">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-center">
-            <div class="glass-card p-10 transform hover:translate-z-10">
-                <div class="text-6xl font-serif text-amber-500 mb-2 stat-item" data-target="12000">0</div>
-                <p class="text-xs tracking-widest text-stone-400 uppercase">Tasses d'Or</p>
-            </div>
-            <div class="glass-card p-10 border-amber-500/30">
-                <div class="text-6xl font-serif text-amber-500 mb-2 stat-item" data-target="98">0</div>
-                <p class="text-xs tracking-widest text-stone-400 uppercase">% Fidélité</p>
-            </div>
-            <div class="glass-card p-10">
-                <div class="text-6xl font-serif text-amber-500 mb-2 stat-item" data-target="24">0</div>
-                <p class="text-xs tracking-widest text-stone-400 uppercase">Heures de Route</p>
+    <section id="produits" class="py-32 bg-[#F4F1EA] px-6 reveal-section">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-7xl font-serif italic text-center mb-24">Choisir mon Bonheur</h2>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center">
+                    <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Douceur Caramel</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Caramel 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold">250g — 43 DH</button>
+                        <button onclick="addToCart('Caramel 1kg', 170)" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold">1kg — 170 DH ★</button>
+                    </div>
+                </div>
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border-4 border-amber-200 scale-105">
+                    <img src="https://i.ibb.co/GfL6SsC8/11.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Éclat Noisette</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Noisette 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold">250g — 43 DH</button>
+                        <button onclick="addToCart('Noisette 1kg', 170)" class="w-full py-5 bg-amber-900 text-white rounded-2xl font-bold">1kg — 170 DH</button>
+                    </div>
+                </div>
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center">
+                    <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Nuance Vanille</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Vanille 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold">250g — 43 DH</button>
+                        <button onclick="addToCart('Vanille 1kg', 170)" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold">1kg — 170 DH</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="produits" class="py-32 px-6 reveal-section">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
-            <div class="glass-card p-8 text-center group">
-                <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-80 object-cover rounded-[2rem] mb-6 group-hover:rotate-2 transition-transform">
-                <h3 class="text-2xl font-serif italic mb-6">Douceur Caramel</h3>
-                <button onclick="addToCart('Caramel 250g', 43)" class="w-full py-4 border border-white/20 rounded-xl hover:bg-white hover:text-black transition-all mb-4">250g — 43 DH</button>
-                <button onclick="handleOrder()" class="w-full py-4 bg-amber-700 rounded-xl font-bold">COMMANDER</button>
+    <div id="cartOverlay" class="fixed inset-0 z-[200] flex justify-end">
+        <div onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="relative w-full max-w-md bg-white h-full p-10 flex flex-col shadow-2xl">
+            <h2 class="text-4xl font-serif italic mb-12">Mon Panier</h2>
+            <div id="cartItems" class="flex-grow space-y-6 overflow-y-auto"></div>
+            <div class="pt-10 border-t-2 border-stone-100 mt-6">
+                <div class="flex justify-between text-3xl font-serif italic mb-10">
+                    <span>Total</span><span id="totalPrice" class="font-bold text-amber-900">0 DH</span>
+                </div>
+                <button onclick="handleOrder()" class="w-full py-6 bg-stone-900 text-white rounded-[2rem] font-bold uppercase tracking-widest shadow-2xl hover:bg-amber-900 transition-all">
+                    Confirmer la Commande
+                </button>
             </div>
-            </div>
-    </section>
+        </div>
+    </div>
 
     <div id="confirmOverlay" class="fixed inset-0 z-[300] flex items-center justify-center p-6">
-        <div class="absolute inset-0 bg-black/90 backdrop-blur-2xl"></div>
-        <div class="relative bg-stone-900 p-12 rounded-[3rem] max-w-lg text-center border border-amber-500/30">
+        <div class="absolute inset-0 bg-stone-950/90 backdrop-blur-xl"></div>
+        <div class="relative bg-white p-12 rounded-[4rem] max-w-lg text-center shadow-2xl border border-amber-100">
             <div class="text-7xl mb-6">✨</div>
-            <h2 class="text-4xl font-serif italic mb-4 text-amber-200">Commande Reçue !</h2>
-            <p class="text-stone-400 italic mb-8">Votre café Veloura est en préparation 3D. Nous vous contacterons sous peu.</p>
-            <button onclick="closeConfirm()" class="px-10 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest">Retour</button>
+            <h2 class="text-4xl font-serif italic mb-4">Commande Reçue !</h2>
+            <p class="text-stone-600 italic mb-8">Merci de votre confiance. Votre instant Veloura est en route. Notre équipe vous contactera dans quelques instants pour finaliser les détails.</p>
+            <button onclick="closeConfirm()" class="px-10 py-4 bg-amber-900 text-white rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-all">Continuer la visite</button>
         </div>
     </div>
 
     <script>
-        // --- LOGIQUE DU CANVAS 3D ---
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function initCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.z = Math.random() * canvas.width; // Profondeur
-                this.size = 1.5;
-            }
-            update() {
-                this.z -= 2; // Les particules avancent vers l'écran
-                if (this.z <= 0) this.z = canvas.width;
-            }
-            draw() {
-                let x = (this.x - canvas.width / 2) * (canvas.width / this.z) + canvas.width / 2;
-                let y = (this.y - canvas.height / 2) * (canvas.width / this.z) + canvas.height / 2;
-                let s = this.size * (canvas.width / this.z);
-                let opacity = 1 - (this.z / canvas.width);
-
-                ctx.fillStyle = `rgba(194, 153, 88, ${opacity})`;
-                ctx.beginPath();
-                ctx.arc(x, y, s, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 400; i++) particles.push(new Particle());
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        animate();
-
-        // --- GESTION INTERFACE ---
+        // ANIMATION AU SCROLL
+        const reveals = document.querySelectorAll('.reveal-section');
+        const statItems = document.querySelectorAll('.stat-item');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    if(entry.target.querySelector('.stat-item')) animateStats();
+                    if(entry.target.classList.contains('overflow-hidden')) animateStats();
                 }
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
+        }, { threshold: 0.2 });
+        reveals.forEach(el => observer.observe(el));
 
         function animateStats() {
-            document.querySelectorAll('.stat-item').forEach(item => {
+            statItems.forEach(item => {
                 const target = +item.getAttribute('data-target');
                 let count = 0;
                 const update = () => {
+                    const speed = target / 50;
                     if(count < target) {
-                        count += target/50;
+                        count += speed;
                         item.innerText = Math.ceil(count);
                         setTimeout(update, 30);
                     } else {
-                        item.innerText = target + "+";
+                        item.innerText = target + (target > 100 ? "+" : (target === 98 ? "%" : "h"));
                     }
                 }
                 update();
             });
         }
 
-        function handleOrder() {
-            document.getElementById('confirmOverlay').classList.add('active');
+        // PANIER
+        let cart = [];
+        function toggleCart() { document.getElementById('cartOverlay').classList.toggle('active'); }
+        
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateUI();
+            toggleCart();
         }
+
+        function updateUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const items = document.getElementById('cartItems');
+            items.innerHTML = cart.map((item) => `
+                <div class="flex justify-between items-center bg-stone-50 p-6 rounded-[2rem] border border-stone-100">
+                    <span class="font-serif italic text-lg">${item.name}</span>
+                    <span class="font-bold text-stone-900">${item.price} DH</span>
+                </div>
+            `).join('');
+            const total = cart.reduce((s, item) => s + item.price, 0);
+            document.getElementById('totalPrice').innerText = total + " DH";
+        }
+
+        // LOGIQUE DE COMMANDE (MESSAGE DE CONFIRMATION)
+        function handleOrder() {
+            if(cart.length === 0) return alert("Votre panier est vide");
+            
+            // On ferme le panier
+            toggleCart();
+            
+            // On affiche le message de succès après un petit délai pour le réalisme
+            setTimeout(() => {
+                document.getElementById('confirmOverlay').classList.add('active');
+                // On vide le panier après commande
+                cart = [];
+                updateUI();
+            }, 500);
+        }
+
         function closeConfirm() {
             document.getElementById('confirmOverlay').classList.remove('active');
         }

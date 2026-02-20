@@ -17,22 +17,24 @@
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #ffffff 0%, #f3efea 100%); }
         .card-3d { transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
         .card-3d:hover { transform: translateY(-15px) scale(1.02); box-shadow: 0 40px 70px rgba(0,0,0,0.08); }
+
         .reveal-section { opacity: 0; transform: translateY(60px); transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal-section.active { opacity: 1; transform: translateY(0); }
+        
         .hero-gradient { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i.ibb.co/d0B0TyL0/33.jpg'); background-size: cover; background-position: center; }
         
         #cartOverlay, #confirmOverlay { transition: 0.8s cubic-bezier(0.8, 0, 0.2, 1); }
         #cartOverlay { transform: translateX(100%); }
         #cartOverlay.active { transform: translateX(0); }
+        
         #confirmOverlay { opacity: 0; pointer-events: none; transform: scale(0.9); }
         #confirmOverlay.active { opacity: 1; pointer-events: auto; transform: scale(1); }
 
         .float-emoji { animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         .scroll-hide::-webkit-scrollbar { display: none; }
-        
-        input, textarea { background: #f9f8f6 !important; border: 1px solid #e5e5e5 !important; transition: all 0.3s; }
-        input:focus, textarea:focus { border-color: #78350f !important; outline: none; box-shadow: 0 0 0 4px rgba(120, 53, 15, 0.05); }
+
+        input::placeholder { color: #a8a29e; font-style: italic; }
     </style>
 </head>
 <body>
@@ -43,8 +45,8 @@
         <div class="text-3xl font-serif font-black text-white mix-blend-difference uppercase tracking-tighter">Veloura</div>
         <div class="flex items-center gap-6">
             <div class="hidden md:flex gap-4 text-white mix-blend-difference text-xl">
-                <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-600"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-600"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-tiktok"></i></a>
             </div>
             <button onclick="toggleCart()" class="bg-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all">
                 <span class="text-xl">🛒</span>
@@ -60,211 +62,351 @@
         </div>
     </header>
 
-    <section class="py-32 bg-stone-50/50 reveal-section">
+    <section class="py-32 px-6 max-w-7xl mx-auto reveal-section">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+            <div class="card-3d relative">
+                <div class="absolute -inset-4 border border-amber-100 rounded-[3.5rem] -z-10 translate-x-4 translate-y-4"></div>
+                <img src="https://i.ibb.co/hJDGrgTr/77.jpg" alt="Café Caramel" class="rounded-[3rem] shadow-2xl">
+            </div>
+            <div class="space-y-8">
+                <span class="text-amber-800 text-xs font-black uppercase tracking-[0.3em]">L'Expérience Ultime ☕</span>
+                <h2 class="text-5xl font-serif italic leading-tight">L'Éveil des Sens</h2>
+                <div class="text-lg text-stone-700 leading-relaxed space-y-6 italic font-light">
+                    <p>« Bienvenue là où le café cesse d’être une simple habitude pour devenir un véritable voyage sensoriel. Chez <strong>Veloura</strong>, nous avons capturé l’essence même du réconfort : l’intensité d’un grain d’exception mariée à la rondeur infinie de notes gourmandes. »</p>
+                    <p>« Imaginez une texture si veloutée qu'elle enrobe votre palais, libérant des arômes de caramel fondant, de noisette grillée ou de vanille pure à chaque gorgée. »</p>
+                    <p>« Que vous soyez en quête d'un réveil énergisant ou d'une parenthèse de douceur en fin de journée, Veloura transforme votre tasse en un instant d'exception. Préparez-vous à redécouvrir le café, tout simplement. »</p>
+                </div>
+                <div class="h-[1px] w-32 bg-amber-800"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white reveal-section">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 space-y-8">
-                    <span class="text-amber-800 text-xs font-black uppercase tracking-[0.3em]">Où nous trouver ? 📍</span>
-                    <h2 class="text-5xl font-serif italic leading-tight">Comment nous découvrir ?</h2>
-                    <div class="grid gap-6">
-                        <div class="p-8 bg-white rounded-[2.5rem] shadow-sm border border-stone-100 flex gap-6 items-start hover:shadow-xl transition-all card-3d">
-                            <span class="text-4xl">🛒</span>
-                            <div>
-                                <h4 class="font-bold text-amber-900 text-xl">En Grandes Surfaces</h4>
-                                <p class="text-stone-500 text-sm leading-relaxed mt-2">Retrouvez l'expérience Veloura dans les rayons gourmets de vos enseignes préférées partout au Maroc.</p>
-                            </div>
-                        </div>
-                        <div class="p-8 bg-amber-900 text-white rounded-[2.5rem] shadow-lg flex gap-6 items-start transform hover:scale-[1.02] transition-all">
-                            <span class="text-4xl">☕</span>
-                            <div>
-                                <h4 class="font-bold text-xl">Dégustation à Domicile</h4>
-                                <p class="text-stone-200 text-sm leading-relaxed mt-2">Nous venons à vous. Commandez votre coffret en ligne et transformez votre salon en atelier de torréfaction.</p>
-                            </div>
-                        </div>
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-serif italic">Vos Moments Veloura</h2>
+                <p class="text-stone-500 mt-4 italic">Le café parfait pour chaque chapitre de votre journée.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group relative overflow-hidden rounded-[2.5rem] h-[450px] card-3d">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">08:00 AM</span>
+                        <h3 class="text-2xl font-serif italic">Le Premier Souffle</h3>
+                        <p class="text-sm text-stone-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Un réveil tout en douceur avec nos notes de vanille pure.</p>
                     </div>
                 </div>
-                <div class="order-1 md:order-2">
-                    <img src="https://i.ibb.co/ZRLqjQ22/image.png" alt="Découverte Veloura" class="rounded-[4rem] shadow-2xl card-3d">
+                <div class="group relative overflow-hidden rounded-[2.5rem] h-[450px] card-3d lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">11:30 AM</span>
+                        <h3 class="text-2xl font-serif italic">La Pause Créative</h3>
+                        <p class="text-sm text-stone-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">L'énergie de la noisette grillée pour stimuler vos idées.</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-[2.5rem] h-[450px] card-3d">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">04:30 PM</span>
+                        <h3 class="text-2xl font-serif italic">L'Heure Veloutée</h3>
+                        <p class="text-sm text-stone-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Le réconfort absolu du caramel fondant après l'effort.</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-[2.5rem] h-[450px] card-3d lg:mt-12">
+                    <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
+                        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2">09:00 PM</span>
+                        <h3 class="text-2xl font-serif italic">Le Rituel Étoilé</h3>
+                        <p class="text-sm text-stone-300 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Partager une tasse, créer des souvenirs durables.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white reveal-section">
+    <section class="py-32 px-6 reveal-section">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-5xl font-serif italic mb-20 underline decoration-amber-100 underline-offset-[15px]">Le Rituel Veloura ⏳</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-10 bg-white/50 rounded-[4rem] card-3d border border-stone-100">
+                    <div class="text-6xl float-emoji mb-6">☕</div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-widest text-amber-900 mb-4 font-black">01. Préparation</h4>
+                    <p class="text-stone-500 text-sm italic leading-relaxed">Versez l'eau frémissante pour libérer l'essence pure du grain.</p>
+                </div>
+                <div class="p-10 bg-white/50 rounded-[4rem] card-3d border border-stone-100">
+                    <div class="text-6xl float-emoji mb-6" style="animation-delay: 0.5s">👃</div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-widest text-amber-900 mb-4 font-black">02. Inspiration</h4>
+                    <p class="text-stone-500 text-sm italic leading-relaxed">Laissez les vapeurs de caramel envahir vos sens avant la gorgée.</p>
+                </div>
+                <div class="p-10 bg-white/50 rounded-[4rem] card-3d border border-stone-100">
+                    <div class="text-6xl float-emoji mb-6" style="animation-delay: 1s">✨</div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-widest text-amber-900 mb-4 font-black">03. Dégustation</h4>
+                    <p class="text-stone-500 text-sm italic leading-relaxed">Savourez l'instant. Le velouté s'installe, le temps s'arrête.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-stone-900 text-white overflow-hidden reveal-section">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-amber-800/20 rounded-full blur-3xl"></div>
+                <img src="https://i.ibb.co/Zz1p02DM/image.png" alt="Pourquoi Veloura" class="rounded-[3rem] shadow-2xl relative z-10 card-3d">
+            </div>
+            <div class="space-y-10">
+                <h2 class="text-5xl font-serif italic text-amber-400">Pourquoi choisir Veloura ?</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div class="text-3xl text-amber-500 font-serif italic">01.</div>
+                        <p class="text-lg text-stone-300 italic">Des grains sélectionnés parmi les meilleures plantations pour une intensité inégalée.</p>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="text-3xl text-amber-500 font-serif italic">02.</div>
+                        <p class="text-lg text-stone-300 italic">Une infusion de saveurs naturelles : caramel fondant et noisettes grillées.</p>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="text-3xl text-amber-500 font-serif italic">03.</div>
+                        <p class="text-lg text-stone-300 italic">Une livraison express en 24h partout au Maroc pour une fraîcheur garantie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-amber-50 reveal-section">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div><div class="text-4xl font-serif font-black text-amber-900">5000+</div><div class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Clients Satisfaits</div></div>
-                <div><div class="text-4xl font-serif font-black text-amber-900">100%</div><div class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Naturel</div></div>
-                <div><div class="text-4xl font-serif font-black text-amber-900">24h</div><div class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Livraison Express</div></div>
-                <div><div class="text-4xl font-serif font-black text-amber-900">4.9/5</div><div class="text-[10px] uppercase tracking-widest font-bold text-stone-500">Note Moyenne</div></div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">5000+</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Clients Heureux</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">100%</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Naturel</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">24h</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Livraison Moyenne</div>
+                </div>
+                <div class="space-y-2">
+                    <div class="text-4xl md:text-5xl font-serif font-black text-amber-900">4.9/5</div>
+                    <div class="text-xs uppercase tracking-widest font-bold text-stone-500">Note Clients</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="produits" class="py-32 px-6 reveal-section bg-[#F4F1EA]/30">
+    <section class="py-32 px-6 reveal-section">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-6xl font-serif italic text-center mb-24 font-bold">Choisir mon Bonheur</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="card-3d bg-white p-8 rounded-[3rem] text-center border border-stone-100">
-                    <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6">
-                    <h3 class="text-2xl font-serif italic mb-6 font-bold">Douceur Caramel</h3>
-                    <div class="grid gap-3">
-                        <button onclick="addToCart('Caramel 250g', 43)" class="py-3 border border-stone-200 rounded-xl hover:bg-stone-50 transition-all font-semibold text-sm">250g — 43 DH</button>
-                        <button onclick="addToCart('Caramel 1kg', 170)" class="py-3 bg-stone-900 text-white rounded-xl hover:bg-amber-900 transition-all font-semibold text-sm">1kg — 170 DH ★</button>
+            <div class="text-center mb-20">
+                <span class="text-amber-800 text-xs font-black uppercase tracking-[0.3em]">Témoignages</span>
+                <h2 class="text-5xl font-serif italic mt-4">Leur Instant Veloura</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-3d p-10 rounded-[3rem] border border-stone-100 bg-white/80">
+                    <div class="flex text-amber-500 mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 italic mb-8">"Une révélation. Le parfum de caramel qui se dégage dès l'ouverture du paquet est incroyable. C'est devenu mon rituel matinal indispensable."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center font-bold text-amber-900">S.A</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Sarah A.</h4>
+                            <p class="text-[10px] text-stone-400 uppercase tracking-widest">Casablanca</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card-3d bg-white p-8 rounded-[3rem] text-center border-4 border-amber-100 scale-105 relative shadow-xl">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-800 text-white px-6 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">Best Seller</div>
-                    <img src="https://i.ibb.co/GfL6SsC8/11.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6">
-                    <h3 class="text-2xl font-serif italic mb-6 font-bold">Éclat Noisette</h3>
-                    <div class="grid gap-3">
-                        <button onclick="addToCart('Noisette 250g', 43)" class="py-3 border border-stone-200 rounded-xl font-semibold text-sm">250g — 43 DH</button>
-                        <button onclick="addToCart('Noisette 1kg', 170)" class="py-3 bg-amber-900 text-white rounded-xl font-semibold text-sm">1kg — 170 DH</button>
+                <div class="card-3d p-10 rounded-[3rem] border border-stone-100 bg-white/80">
+                    <div class="flex text-amber-500 mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 italic mb-8">"Enfin un café aromatisé qui garde la force d'un vrai café. La texture en bouche est vraiment veloutée comme promis. Livraison très rapide !"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center font-bold text-amber-900">M.L</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Mehdi L.</h4>
+                            <p class="text-[10px] text-stone-400 uppercase tracking-widest">Rabat</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card-3d bg-white p-8 rounded-[3rem] text-center border border-stone-100">
-                    <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="w-full h-72 object-cover rounded-[2rem] mb-6">
-                    <h3 class="text-2xl font-serif italic mb-8 font-bold">Nuance Vanille</h3>
-                    <div class="grid gap-3">
-                        <button onclick="addToCart('Vanille 250g', 43)" class="py-3 border border-stone-200 rounded-xl font-semibold text-sm">250g — 43 DH</button>
-                        <button onclick="addToCart('Vanille 1kg', 170)" class="py-3 bg-stone-900 text-white rounded-xl font-semibold text-sm">1kg — 170 DH</button>
+                <div class="card-3d p-10 rounded-[3rem] border border-stone-100 bg-white/80">
+                    <div class="flex text-amber-500 mb-6 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-stone-600 italic mb-8">"Le goût noisette est d'une finesse rare. On sent que ce sont des arômes naturels. Mes invités en redemandent à chaque fois."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center font-bold text-amber-900">Y.T</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-stone-900">Yasmine T.</h4>
+                            <p class="text-[10px] text-stone-400 uppercase tracking-widest">Marrakech</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-stone-950 text-white py-20 px-8 text-center">
-        <div class="text-3xl font-serif italic mb-8">Veloura</div>
-        <div class="flex justify-center gap-8 text-2xl mb-10 text-stone-400">
-            <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500"><i class="fab fa-tiktok"></i></a>
+    <section id="produits" class="py-32 bg-[#F4F1EA]/50 px-6 reveal-section">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-7xl font-serif italic text-center mb-24">Choisir mon Bonheur</h2>
+            <div class="grid md:grid-cols-3 gap-16">
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-200/50">
+                    <img src="https://i.ibb.co/4w5WgdRw/nn.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Douceur Caramel</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Caramel 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold hover:border-amber-800 transition-all">250g — 43 DH</button>
+                        <button onclick="addToCart('Caramel 1kg', 170)" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold hover:bg-amber-900 transition-all">1kg — 170 DH ★</button>
+                    </div>
+                </div>
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border-4 border-amber-200 scale-105 shadow-2xl relative">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-amber-800 text-white px-8 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">Best Seller</div>
+                    <img src="https://i.ibb.co/GfL6SsC8/11.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Éclat Noisette</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Noisette 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold transition-all">250g — 43 DH</button>
+                        <button onclick="addToCart('Noisette 1kg', 170)" class="w-full py-5 bg-amber-900 text-white rounded-2xl font-bold transition-all">1kg — 170 DH</button>
+                    </div>
+                </div>
+                <div class="card-3d bg-white p-10 rounded-[4rem] text-center border border-stone-200/50">
+                    <img src="https://i.ibb.co/DHqWrnWT/88.jpg" class="w-full h-80 object-cover rounded-[3rem] mb-8">
+                    <h3 class="text-3xl font-serif italic mb-8">Nuance Vanille</h3>
+                    <div class="space-y-4">
+                        <button onclick="addToCart('Vanille 250g', 43)" class="w-full py-4 border-2 border-stone-100 rounded-2xl font-bold transition-all">250g — 43 DH</button>
+                        <button onclick="addToCart('Vanille 1kg', 170)" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold transition-all">1kg — 170 DH</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="text-stone-600 text-[9px] uppercase tracking-[0.5em]">© 2024 Veloura Coffee Experience • Maroc</p>
+    </section>
+
+    <footer class="bg-stone-950 text-white pt-24 pb-12 px-8 text-center">
+        <div class="text-4xl font-serif italic mb-8">Veloura</div>
+        <div class="flex justify-center gap-8 text-3xl mb-12">
+            <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/212600000000" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p class="text-stone-600 text-[10px] uppercase tracking-[0.5em]">© 2024 Veloura Coffee Experience • Maroc</p>
     </footer>
 
     <div id="cartOverlay" class="fixed inset-0 z-[200] flex justify-end">
-        <div onclick="toggleCart()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-lg bg-white h-full shadow-2xl flex flex-col">
-            <div class="p-8 border-b flex justify-between items-center">
-                <h2 class="text-3xl font-serif italic">Ma Commande</h2>
-                <button onclick="toggleCart()" class="text-stone-400 hover:text-black text-2xl">&times;</button>
+        <div onclick="toggleCart()" class="absolute inset-0 bg-black/60 backdrop-blur-md"></div>
+        <div class="relative w-full max-w-md bg-white h-full p-8 flex flex-col shadow-2xl overflow-y-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-4xl font-serif italic">Mon Panier</h2>
+                <button onclick="toggleCart()" class="text-stone-400 hover:text-black transition-all text-2xl"><i class="fas fa-times"></i></button>
             </div>
-            
-            <div class="flex-grow overflow-y-auto p-8 space-y-4 scroll-hide" id="cartItems">
-                </div>
-
-            <div class="p-8 bg-stone-50 border-t space-y-6">
+            <div id="cartItems" class="space-y-4 mb-8"></div>
+            <div class="space-y-6 pt-6 border-t-2 border-stone-100">
+                <h3 class="font-bold text-amber-900 uppercase text-xs tracking-widest">Informations de livraison</h3>
                 <div class="space-y-4">
-                    <h4 class="font-bold text-xs uppercase tracking-widest text-amber-900">Informations Personnelles</h4>
-                    <input type="text" id="custName" placeholder="Nom Complet" class="w-full p-4 rounded-xl text-sm">
-                    <input type="tel" id="custPhone" placeholder="Téléphone (WhatsApp)" class="w-full p-4 rounded-xl text-sm">
-                    <textarea id="custAddress" placeholder="Adresse de livraison au Maroc" class="w-full p-4 rounded-xl text-sm h-20"></textarea>
+                    <input type="text" id="custName" placeholder="Nom Complet" class="w-full p-4 bg-stone-50 rounded-xl border border-stone-100 focus:outline-none focus:border-amber-800 transition-all">
+                    <input type="tel" id="custPhone" placeholder="Téléphone (ex: 06...)" class="w-full p-4 bg-stone-50 rounded-xl border border-stone-100 focus:outline-none focus:border-amber-800 transition-all">
+                    <textarea id="custAddress" placeholder="Adresse de livraison au Maroc" rows="3" class="w-full p-4 bg-stone-50 rounded-xl border border-stone-100 focus:outline-none focus:border-amber-800 transition-all"></textarea>
                 </div>
-
-                <div class="flex justify-between items-end">
-                    <span class="text-stone-500 text-sm">Total :</span>
-                    <span id="totalPrice" class="text-3xl font-serif font-bold text-amber-900">0 DH</span>
+            </div>
+            <div class="pt-10 border-t-2 border-stone-100 mt-8">
+                <div class="flex justify-between text-3xl font-serif italic mb-10">
+                    <span>Total</span><span id="totalPrice" class="font-bold text-amber-900">0 DH</span>
                 </div>
-                
-                <button onclick="handleOrder()" class="w-full py-5 bg-stone-900 text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-amber-900 transition-all">Confirmer & Commander</button>
+                <button onclick="handleOrder()" class="w-full py-6 bg-stone-900 text-white rounded-[2rem] font-bold uppercase tracking-widest shadow-2xl hover:bg-amber-900 transition-all">Confirmer la Commande</button>
             </div>
         </div>
     </div>
 
     <div id="confirmOverlay" class="fixed inset-0 z-[300] flex items-center justify-center p-6">
         <div class="absolute inset-0 bg-stone-950/90 backdrop-blur-xl"></div>
-        <div class="relative bg-white p-12 rounded-[3rem] max-w-md text-center shadow-2xl">
-            <div class="text-6xl mb-6 font-bold text-amber-900 italic font-serif">Veloura</div>
-            <h2 class="text-3xl font-serif italic mb-4">Commande Reçue !</h2>
-            <p class="text-stone-600 text-sm mb-8">Merci <span id="userNameConfirm" class="font-bold"></span>. Nous préparons votre café avec soin. On vous contacte sur le <span id="userPhoneConfirm" class="font-bold"></span>.</p>
-            <button onclick="closeConfirm()" class="w-full py-4 bg-amber-900 text-white rounded-full font-bold uppercase tracking-widest">Fermer</button>
+        <div class="relative bg-white p-12 rounded-[4rem] max-w-lg text-center shadow-2xl">
+            <div class="text-7xl mb-6">✨</div>
+            <h2 id="confirmTitle" class="text-4xl font-serif italic mb-4">Commande Reçue !</h2>
+            <p id="confirmText" class="text-stone-600 italic mb-8">Votre instant Veloura est en préparation. Nous vous contacterons sous peu pour finaliser la livraison.</p>
+            <button onclick="closeConfirm()" class="px-10 py-4 bg-amber-900 text-white rounded-full font-bold uppercase tracking-widest">Continuer</button>
         </div>
     </div>
 
     <script>
-        // BACKGROUND ANIMATION
+        // BACKGROUND 3D
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let mouse = { x: 0, y: 0 };
+
         function initCanvas() {
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-            particles = Array.from({length: 30}, () => ({
-                x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-                size: Math.random() * 15 + 2, speedX: (Math.random() - 0.5) * 0.4,
-                speedY: (Math.random() - 0.5) * 0.4, alpha: Math.random() * 0.2
-            }));
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 30; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 20 + 5,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    alpha: Math.random() * 0.2
+                });
+            }
         }
+
         function animate() {
-            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
-                p.x += p.speedX; p.y += p.speedY;
-                if(p.x<0||p.x>canvas.width) p.speedX*=-1;
-                if(p.y<0||p.y>canvas.height) p.speedY*=-1;
+                p.x += p.speedX + (mouse.x - canvas.width/2) * 0.001;
+                p.y += p.speedY + (mouse.y - canvas.height/2) * 0.001;
+                if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
                 ctx.fillStyle = `rgba(120, 53, 15, ${p.alpha})`;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
             });
             requestAnimationFrame(animate);
         }
-        window.addEventListener('resize', initCanvas); initCanvas(); animate();
+        window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.addEventListener('resize', initCanvas);
+        initCanvas(); animate();
 
-        // SCROLL REVEAL
-        const obs = new IntersectionObserver((es) => es.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold: 0.1});
-        document.querySelectorAll('.reveal-section').forEach(el => obs.observe(el));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-        // PANIER
         let cart = [];
         function toggleCart() { document.getElementById('cartOverlay').classList.toggle('active'); }
-
         function addToCart(name, price) {
-            cart.push({ id: Date.now(), name, price });
+            const id = Date.now();
+            cart.push({id, name, price});
             updateUI();
-            if(!document.getElementById('cartOverlay').classList.contains('active')) toggleCart();
+            if (!document.getElementById('cartOverlay').classList.contains('active')) toggleCart();
         }
-
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateUI();
-        }
-
+        function removeFromCart(id) { cart = cart.filter(item => item.id !== id); updateUI(); }
         function updateUI() {
             document.getElementById('cartCount').innerText = cart.length;
-            const itemsDiv = document.getElementById('cartItems');
-            if(cart.length === 0) {
-                itemsDiv.innerHTML = `<div class="h-full flex flex-col items-center justify-center text-stone-400 italic"><p>Votre panier est vide...</p></div>`;
+            const items = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                items.innerHTML = '<p class="text-stone-400 italic text-center py-10">Votre panier est vide...</p>';
             } else {
-                itemsDiv.innerHTML = cart.map(item => `
-                    <div class="flex justify-between items-center bg-white p-5 rounded-2xl border border-stone-100 shadow-sm">
-                        <div><p class="font-serif italic text-lg font-bold">${item.name}</p><p class="text-amber-900 font-bold">${item.price} DH</p></div>
-                        <button onclick="removeFromCart(${item.id})" class="text-stone-300 hover:text-red-500 transition-colors"><i class="fas fa-trash-alt"></i></button>
-                    </div>
-                `).join('');
+                items.innerHTML = cart.map((item) => `
+                    <div class="flex justify-between items-center bg-stone-50 p-5 rounded-2xl border border-stone-100 group">
+                        <div><span class="font-serif italic text-lg block">${item.name}</span><span class="font-bold text-amber-900">${item.price} DH</span></div>
+                        <button onclick="removeFromCart(${item.id})" class="text-stone-300 hover:text-red-500 transition-colors p-2"><i class="fas fa-trash-alt"></i></button>
+                    </div>`).join('');
             }
-            document.getElementById('totalPrice').innerText = cart.reduce((sum, item) => sum + item.price, 0) + " DH";
+            document.getElementById('totalPrice').innerText = cart.reduce((s, item) => s + item.price, 0) + " DH";
         }
-
         function handleOrder() {
             const name = document.getElementById('custName').value;
             const phone = document.getElementById('custPhone').value;
-            const addr = document.getElementById('custAddress').value;
-
-            if(cart.length === 0) return alert("Votre panier est vide !");
-            if(!name || !phone || !addr) return alert("Veuillez remplir vos informations de livraison.");
-
-            document.getElementById('userNameConfirm').innerText = name;
-            document.getElementById('userPhoneConfirm').innerText = phone;
-            
+            const address = document.getElementById('custAddress').value;
+            if (cart.length === 0) return alert("Votre panier est vide !");
+            if (!name || !phone || !address) return alert("Veuillez remplir vos informations.");
             toggleCart();
             setTimeout(() => {
                 document.getElementById('confirmOverlay').classList.add('active');
-                cart = []; updateUI();
-                document.getElementById('custName').value = "";
-                document.getElementById('custPhone').value = "";
-                document.getElementById('custAddress').value = "";
-            }, 600);
+                cart = [];
+                document.getElementById('custName').value = ""; document.getElementById('custPhone').value = ""; document.getElementById('custAddress').value = "";
+                updateUI();
+            }, 500);
         }
-
         function closeConfirm() { document.getElementById('confirmOverlay').classList.remove('active'); }
     </script>
 </body>
 </html>
+         

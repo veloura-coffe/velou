@@ -44,9 +44,12 @@
     <nav class="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-white/10 backdrop-blur-md border-b border-white/10">
         <div class="text-3xl font-serif font-black text-white mix-blend-difference uppercase tracking-tighter">Veloura</div>
         <div class="flex items-center gap-6">
-            <div class="hidden md:flex gap-4 text-white mix-blend-difference text-xl">
-                <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-tiktok"></i></a>
+            <div class="hidden md:flex flex-col items-end gap-1">
+                <span class="text-[9px] text-white mix-blend-difference uppercase tracking-[0.2em] font-bold">Suivez l'expérience</span>
+                <div class="flex gap-4 text-white mix-blend-difference text-xl">
+                    <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-600 transition-colors"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
             <button onclick="toggleCart()" class="bg-white p-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-110 transition-all">
                 <span class="text-xl">🛒</span>
@@ -77,6 +80,27 @@
                     <p>« Que vous soyez en quête d'un réveil énergisant ou d'une parenthèse de douceur en fin de journée, Veloura transforme votre tasse en un instant d'exception. Préparez-vous à redécouvrir le café, tout simplement. »</p>
                 </div>
                 <div class="h-[1px] w-32 bg-amber-800"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-stone-50 reveal-section">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <span class="text-amber-800 text-xs font-black uppercase tracking-[0.3em]">Où nous trouver ?</span>
+                <h2 class="text-5xl font-serif italic mt-4">Comment nous découvrir ?</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="card-3d p-12 rounded-[4rem] bg-white border border-stone-100 flex flex-col items-center text-center">
+                    <div class="text-6xl mb-6">🏬</div>
+                    <h3 class="text-2xl font-serif italic mb-4">En Grandes Surfaces</h3>
+                    <p class="text-stone-500 italic leading-relaxed">Retrouvez nos gammes exclusives dans les rayons gourmets de vos enseignes préférées partout au Maroc. Cherchez l'élégance Veloura.</p>
+                </div>
+                <div class="card-3d p-12 rounded-[4rem] bg-white border border-stone-100 flex flex-col items-center text-center">
+                    <div class="text-6xl mb-6">🏡</div>
+                    <h3 class="text-2xl font-serif italic mb-4">Dégustation à Domicile</h3>
+                    <p class="text-stone-500 italic leading-relaxed">Commandez directement sur notre site et recevez votre coffret sensoriel chez vous sous 24h pour une dégustation dans le confort de votre intérieur.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -280,7 +304,8 @@
     </section>
 
     <footer class="bg-stone-950 text-white pt-24 pb-12 px-8 text-center">
-        <div class="text-4xl font-serif italic mb-8">Veloura</div>
+        <div class="text-4xl font-serif italic mb-4">Veloura</div>
+        <p class="text-amber-500 text-sm italic mb-8 tracking-wide">"Rejoignez notre communauté de passionnés et partagez votre #InstantVeloura"</p>
         <div class="flex justify-center gap-8 text-3xl mb-12">
             <a href="https://www.instagram.com/velours_experience?igsh=MWxxcnhidG5ocWVsbw==" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@veloura017?_r=1&_t=ZS-944pODw4n81" target="_blank" class="hover:text-amber-500 transition-all"><i class="fab fa-tiktok"></i></a>
@@ -409,4 +434,3 @@
     </script>
 </body>
 </html>
-         
